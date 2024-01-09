@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://wallpaperaccess.com/full/7176815.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Century Gothic';
+            margin: 0;
+        }
+        .header {
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .logo a, .nav a, .main a {
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px;
+        }
+        .nav a:hover, .main a:hover {
+            color: white;
+            background: #74B49B;
+            transition: .5s;
+        }
+        .nav .active {
+            border-bottom: 5px solid #74B49B;
+            border-radius: 5px;;
+            pointer-events: none;
+            padding-bottom: 5px;
+        }
+        .title p {
+            font-size: 100px;
+            margin-left: 110px;
+            font-weight: bold;
+            color: white;
+        }
+        .patients {
+            margin-left: auto;
+            margin-top: -150px;
+            margin-right: auto;
+            width: 75%;
+            height: 600px;
+        }
+        th, tr {
+            background-color: #74B49B;
+            padding: 20px;
+            text-align: center;
+        }
+        th {
+            background-color: #5C8D89;
+        }
+        tr:nth-child(odd) {
+            background-color: #A7D7C5;
+        }
+        tr:hover {
+            background-color: #F4F9F4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">
+                <a href="#"> Hospital Management System </a>
+            </div>
+            <div class="nav">
+                <a href="Home.html">Home</a>
+                <a href="#">Prescriptions</a>
+                <a class="active" href="#">Records</a>
+                <a href="#">Inventory</a>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="title">
+                <p> Patients </p>
+            </div>
+            <div class="content">
+                <table class="patients">
+                    <tr>
+                        <th colspan="100%" style="background-color: #2E6E65;">Choose a patient name for further information</th>
+                    </tr>
+                    <tr>
+                        <th>Patient Name</td>
+                        <th>Age</td>
+                        <th>Address</td>
+                        <th>Contact Number</td>
+                    </tr>
+                    <tr>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Name</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Date</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Address</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Contact</td>
+                    </tr>
+                    <tr>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Name</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Date</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Address</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Contact</td>
+                    </tr>
+                    <tr>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Name</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Date</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Address</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Contact</td>
+                    </tr>
+                    <tr>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Name</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Date</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Address</td>
+                        <td onclick="window.location='PatientInformation.html';" style="cursor: pointer;">Contact</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
