@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/4113173.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Century Gothic';
+            margin: 0;
+        }
+        .header {
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .logo a, .nav a, .main a {
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px;
+        }
+        .nav a:hover, .main a:hover {
+            color: white;
+            background: #74B49B;
+            transition: .5s;
+        }
+        .nav .active {
+            border-bottom: 5px solid #74B49B;
+            border-radius: 5px;;
+            pointer-events: none;
+            padding-bottom: 5px;
+        }
+        .title p {
+            font-size: 100px;
+            margin-left: 110px;
+            font-weight: bold;
+            color: white;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            background-color: #5C8D89;
+            margin: -150px 200px 100px 200px;
+            padding: 20px;
+        }
+        .head {
+            padding-top: 50px;
+            padding-left: 100px;
+            color: white;
+        }
+        .head ul li{
+            list-style-type: none;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            margin: 20px 20px -20px -20px;
+        }
+        .left, .right {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .left-top, .right-bottom {
+            background-color: #74B49B;
+            height: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        .left-bottom,.right-top {
+            background-color: #A7D7C5;
+            height: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        .content img {
+            width: 500px;
+            height: 500px;
+            margin-top: -500px;
+            margin-left: auto;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">
+                <a href="#"> Hospital Management System </a>
+            </div>
+            <div class="nav">
+                <a href="Home.html">Home</a>
+                <a href="#">Prescriptions</a>
+                <a class="active" href="#">Records</a>
+                <a href="#">Inventory</a>
+            </div>
+        </div>
+        
+        <div class="main">
+            <div class="title">
+                <p> Patient Information </p>
+            </div>
+            <div class="content">
+                <div class="head">
+                    <h1>Personal Details</h1>
+                    <ul>
+                        <li>Name: </li>
+                        <li>Age: </li>
+                        <li>Date of Birth: </li>
+                        <li>Gender: </li>
+                        <li>Nationality: </li>
+                        <li>Religion: </li>
+                        <li>Address: </li>
+                        <li>Contact Number: </li>
+                        <li>Email Address: </li>
+                    </ul>
+                </div>
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                <div class="box">
+                    <div class="left">
+                        <div class="left-top">
+                            <h3>Medical Record</h3>
+                            <ul>
+                                <li>Sample</li>
+                                <li>Sample</li>
+                                <li>Sample</li>
+                            </ul>
+                        </div>
+                        <div class="left-bottom">
+                            <h3>Medications</h3>
+                            <ul>
+                                <li>Sample</li>
+                                <li>Sample</li>
+                                <li>Sample</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="right-top">
+                            <h3>Doctor's Recommendation</h3>
+                            <p> Paragraph Sample </p>
+                        </div>
+                        <div class="right-bottom">
+                            <h3>Recent Appointments</h3>
+                            <ul>
+                                <li>01-01-23</li>
+                                <li>01-02-23</li>
+                                <li>01-03-23</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
