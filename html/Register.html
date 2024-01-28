@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log-in</title>
+    <title>Register</title>
     <link rel="icon" href="../Pics/logo.png" type="image/x-icon">
     <style>
         body {
-            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/Clinic.png");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(172, 215, 255, 0.267)), url("../Pics/Clinic.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             font-family: 'Century Gothic';
             overflow-x: hidden;
+            overflow-y: hidden;
             margin: 0;
         }
         .container {
@@ -23,45 +24,45 @@
             position: relative;
             width: 100%;
             height: 98.5vh;
-            margin: 5px;
             overflow: hidden;
-        }
-        .Login {
-            position: relative;
-            top:25%;
-            left: 21%;
-            background-color: aliceblue;
-            width: 400px;
-            height: max-content;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            box-sizing: border-box;
-            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.856);
-            border-radius: 10px;
-            text-align: center;
-            color:aliceblue;
-        }
-        .input-container input {
-            width: 100%;
-            font-size: 16px;
-            margin-bottom: 30px;
-            border: none;
-            border-bottom: 1px solid #797979;
-            background: transparent;
-            outline: none;
-        }
-        input, select, textarea{
-            color: rgb(255, 255, 255);
-        }
-        .Register {
-            display: flex;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url("../Pics/registerbg.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             margin: 5px;
             border-radius: 1%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url("../Pics/registerbg.png");
+        }
+        .Login {
+            position: relative;
+            top:15%;
+            left: 21%;
+            width: 400px;
+            height: max-content;
+            padding: 40px;
+            background: rgba(0, 41, 94, 0.4);
+            box-sizing: border-box;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.11);
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+        .input-container input {
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 30px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #ffffffc7;
+            background: transparent;
+        }
+        
+        input::placeholder {
+            color: #ffffff7e; /* Change this to the desired color */
+        }
+        .Register {
+            display: flex;
             width: 80%;
+            margin: 5px;
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -70,8 +71,9 @@
             text-align: center;
         }
         .Register-Contents .logs {
-            background-color: rgba(240, 248, 255, 0.712); 
-            color: black; padding: 20px; 
+            background-color: rgba(0, 0, 0, 0.658);
+            color: antiquewhite; 
+            padding: 20px; 
             border-radius: 50%; 
             text-decoration: none;
             font-family:monospace;
@@ -81,14 +83,14 @@
             width: 20%;
             transition: 1s;
             &:hover {
-                background-color: rgba(0, 0, 0, 0.658);
-                color: antiquewhite;
+                background-color: rgba(240, 248, 255, 0.712); 
+                color: black;
             }
         }
 
         .Register-Contents h1, .logs, p {
             padding: 20px 0;
-            color: aliceblue;
+            color: black;
         }
     </style>
 </head>
@@ -97,12 +99,21 @@
         <div class="Login-container">
             <div class="Login">
                 <form>
-                    <h1>Login To Your Account<hr></h1>
+                    <h1>Create an Account<hr></h1>
                     <div class="input-container">
-                        <input required="" name="" type="text" placeholder="Email or Username" required/>
+                        <input name="Email" type="email" placeholder="Email" required/>
                     </div>
                     <div class="input-container">
-                        <input required="" name="" type="password" placeholder="Password" required/>
+                        <input name="Username" type="text" placeholder="Username" required/>
+                    </div>
+                    <div class="input-container">
+                        <input name="Address" type="text" placeholder="Address" required/>
+                    </div>
+                    <div class="input-container">
+                        <input name="ContactNumber" type="tel" id="contactNumber" pattern="[0-9]{11}" placeholder="Contact no." required/>
+                    </div>
+                    <div class="input-container">
+                        <input name="Password" type="password" placeholder="Password" required/>
                     </div>
                     <div>
                         <button href="#">Log-in</button>
@@ -114,10 +125,9 @@
         <div class="Register">
             <div class="Register-Contents">
                 <a href="Home.html"><img src="../Pics/logo.png" style=" vertical-align:middle; width: 50px; height: 50px; margin:20px 0 0; border-radius:50% ;"/></a>
-                
-                <h1>Don't Have an Account Yet?</h1>
-                <p>Sign up and make an Account now</p>
-                <a class="logs" href="patientRegister.html">Sign-up</a>
+                <h1>Already Have an Account?</h1>
+                <p>Sign-in now to Your Account</p>
+                <a class="logs" href="patientLogin.html">Log-in</a>
             </div>
         </div>
     </div>

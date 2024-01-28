@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" href="../Pics/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -11,7 +14,7 @@
             transition-duration: 1s; 
         }
         body {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("../Pics/Clinic.png");
+            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/Clinic.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -77,7 +80,7 @@
             font-weight: bold;
         }
         .main p {
-            background: url("https://wallpaperaccess.com/full/9648324.jpg");
+            background: url("https://images.unsplash.com/photo-1473893604213-3df9c15611c0?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
             background-size: cover;
             background-clip: text;
             color: transparent;
@@ -119,7 +122,7 @@
         }
         .description img{
             width: 550px;
-            height: 350px;
+            height: auto;
             padding: 15px 10px 0 10px;
         }
         /* Main 2 Slide show */
@@ -164,8 +167,12 @@
         }
         /* Footer */
         .footer {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60));
-            padding: 100px 30px;
+            background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/SA.png");
+            padding: 100px 30px 50px 30px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         .address {
             background-color: #ffffffc2;
@@ -196,7 +203,7 @@
                 <div id="dropdown">
                     <a class="nav-link" href="#">Accounts</a>
                     <div id="dropdown-container">
-                        <a class="dropdown-content" href="#">Patient</a>
+                        <a class="dropdown-content" href="patientLogin.html">Patient</a>
                         <a class="dropdown-content" href="#">Doctors</a>
                         <a class="dropdown-content" href="#">Admin</a>
                     </div>
@@ -300,15 +307,30 @@
                         </div>
                     </div>
                 </div>
+                <div id="map" style="height: 200px;"></div>
             </div>
             <div class="copyright">
                 <div>
-                    <p>© 2024 All Rights Reserved. Design By<a style="text-decoration: none; color: black; transition: 1s;" onmouseover="this.style.color='white';" onmouseout="this.style.color='black';"href="#AboutUs"> GROUP 2</a></p>
+                    <p>© 2024 All Rights Reserved. Designed By<a style="text-decoration: none; color: black; transition: 1s;" onmouseover="this.style.color='white';" onmouseout="this.style.color='black';" href="#AboutUs"> GROUP 2</a></p>
                 </div>
             </div>
         </footer>
-
     </div>
+    <!-- For Map API -->
+    <script>
+        var mymap = L.map('map').setView([14.3359, 121.08850], 40);
+    </script>
+    <script>
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(mymap);
+    </script>
+    <script>
+        L.marker([14.3359, 121.08850]).addTo(mymap)
+          .bindPopup('San Antonio Health Center.');
+    </script>
+
+    <!-- For WebPage Stylin -->
     <script>
         function activateLink(link) {
             var links = document.querySelectorAll('.nav-link');
