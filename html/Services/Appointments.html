@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            transform: translateZ(0);
+            transition-duration: 1s; 
+        }
+        body {
+            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../../Pics/Clinic.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Century Gothic';
+            margin: 0;
+            overflow-x: hidden;
+        }
+        /* HEADER */
+        .header {
+            background-image: linear-gradient(to right, rgba(0, 194, 253, 0.918), rgba(255, 255, 255, 0.788), rgb(255, 255, 255), rgba(255, 255, 255, 0.788), rgba(0, 194, 253, 0.918));
+            text-align: center;
+            padding: 30px;
+            overflow: hidden;
+        }
+        .nav a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0px 90px 0 90px;
+        }
+        .nav a:hover, .main a:hover {
+            color: white;
+            background: #74B49B;
+            transition: .5s;
+        }
+        .active {
+            border-bottom: 5px solid #74B49B;
+            border-radius: 5px;;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header" id="Home">
+            <div class="logo">
+                <a href="../Home.html" style="font-size: 20px; text-decoration: none; color: black;"><img src="../../Pics/logo.png" width="65px" height="60px" style="vertical-align: middle; border-radius: 50%;"/>BOOM Qlinic </a>
+            </div>
+            <div class="nav" style="display: inline-flex; width: auto;">
+                <a class="nav-link active" href="#Appointments" onclick="activateLink(this); return true;">Appointments</a>
+                <a class="nav-link" href="#" onclick="activateLink(this); return true;">About Us</a>
+                <a class="nav-link" href="#" onclick="activateLink(this); return true;">Contacts</a>
+            </div>
+        </header>
+    </div>
+    <script>
+        function activateLink(link) {
+            var links = document.querySelectorAll('.nav-link');
+            links.forEach(function (item) {
+                item.classList.remove('active');
+            });
+            
+            link.classList.add('active');
+        }
+    </script>
+</body>
+</html>

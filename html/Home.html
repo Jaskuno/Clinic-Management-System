@@ -14,7 +14,7 @@
             transition-duration: 1s; 
         }
         body {
-            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/Clinic.png");
+            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/Clinic.jpeg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -68,7 +68,7 @@
                 opacity: 0;
                 position: absolute;
                 right:19.2%;
-                top: 6.6%;
+                top: 5.9%;
                 z-index: 1;
                 transition: opacity 2s, visibility 0s;
             }
@@ -98,8 +98,8 @@
             height: 170px;
             font-size: 50px;
         }
-        #prescriptions:hover {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/1503528.jpg");
+        #Appointments:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/9648347.jpg");
             background-size: cover;
         }
         #records:hover {
@@ -107,7 +107,7 @@
             background-size: cover;
         }
         #inventory:hover {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/9648347.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/1503528.jpg");
             background-size: cover;
         }
         /* Main2 */
@@ -167,18 +167,26 @@
         }
         /* Footer */
         .footer {
-            background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/SA.png");
-            padding: 100px 30px 50px 30px;
+            background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(0, 0, 0, 0.60)), url("../Pics/SA.jpeg");
+            padding: 100px 50px 50px 50px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
         .address {
-            background-color: #ffffffc2;
+            width: 100%;
+            background-color: #0000007c;
             padding: 10px 0 10px 10px;
+            color: aliceblue;
         }
-
+        .address hr {
+            float: left;
+            width: 90%;
+        }
+        .address-contents img {
+            filter: invert(50%);
+        }
         .copyright {
             background: rgba(255, 255, 255, 0.281);
             padding: 10px 0px 10px 0;
@@ -194,7 +202,7 @@
 
         <header class="header" id="Home">
             <div class="logo">
-                <a href="#" style="font-size: 20px; text-decoration: none; color: black;"><img src="../Pics/logo.png" width="65px" height="60px" style="vertical-align: middle; border-radius: 50%;"/>BOOM Qlinic </a>
+                <a href="#" style="font-size: 20px; text-decoration: none; color: black;"><img src="../Pics/logo.png" width="65px" height="60px" style="vertical-align: middle; border-radius: 50%;"/>Biñan Clinic Management system</a>
             </div>
             <div class="nav" style="display: inline-flex; width: auto;">
                 <a class="nav-link active" href="#Home" onclick="activateLink(this); return true;">Home</a>
@@ -203,8 +211,7 @@
                 <div id="dropdown">
                     <a class="nav-link" href="#">Accounts</a>
                     <div id="dropdown-container">
-                        <a class="dropdown-content" href="patientLogin.html">Patient</a>
-                        <a class="dropdown-content" href="#">Doctors</a>
+                        <a class="dropdown-content" href="Login.html">Doctors</a>
                         <a class="dropdown-content" href="#">Admin</a>
                     </div>
                 </div>
@@ -214,7 +221,7 @@
             <div class="main" id="InitialPage" style="margin-bottom: 50px;">
                 <p>Clinic Management System</p>
                 <div class="link">
-                    <a href="#" id="prescriptions" style="background-color: #5C8D89;">Prescriptions</a>
+                    <a href="Services/Appointments.html" id="Appointments" style="background-color: #5C8D89;">Appointments</a>
                     <a href="Records.html" id="records" style="background-color: #74B49B;">Records</a>
                     <a href="#" id="inventory" style="background-color: #A7D7C5;">Inventory</a>
                 </div>
@@ -223,12 +230,12 @@
                 <div class="description">
                     <h1>About The Clinic<hr></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <img src="../Pics/hart.png"/>
+                    <img src="../Pics/hart.jpeg"/>
                 </div>
                 <div class="slideshow-container">
                     <div class="slides">
                         <div class="dev-slide">
-                            <img src="../Pics/devs/dev1.png"/>
+                            <img src="../Pics/devs/dev1.jpeg"/>
                             <h1>Kenneth Odgien<hr>
                                 <p style="font-size: medium; font-weight: lighter; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </h1>
@@ -236,7 +243,7 @@
                     </div>
                     <div class="slides">
                         <div class="dev-slide">
-                            <img src="../Pics/devs/dev2.png"/>
+                            <img src="../Pics/devs/dev2.jpeg"/>
                             <h1>Razell Quitalig<hr>
                                 <p style="font-size: medium; font-weight: lighter; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </h1>
@@ -244,7 +251,7 @@
                     </div>
                     <div class="slides">
                         <div class="dev-slide">
-                            <img src="../Pics/devs/dev3.png"/>
+                            <img src="../Pics/devs/dev3.jpeg"/>
                             <h1>Danica Malana<hr>
                                 <p style="font-size: medium; font-weight: lighter; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </h1>
@@ -252,7 +259,7 @@
                     </div>
                     <div class="slides">
                         <div class="dev-slide">
-                            <img src="../Pics/devs/dev4.png"/>
+                            <img src="../Pics/devs/dev4.jpeg"/>
                             <h1>Jaspher Baet<hr>
                                 <p style="font-size: medium; font-weight: lighter; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </h1>
@@ -260,7 +267,7 @@
                     </div>
                     <div class="slides">
                         <div class="dev-slide">
-                            <img src="../Pics/devs/dev5.png"/>
+                            <img src="../Pics/devs/dev5.jpeg"/>
                             <h1>Sarah Orejo<hr>
                                 <p style="font-size: medium; font-weight: lighter; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </h1>
@@ -269,19 +276,19 @@
 
                     <div class="row">
                         <div class="column">
-                            <img class="demo cursor" src="../Pics/devs/dev1.png" onclick="currentSlide(1)">
+                            <img class="demo cursor" src="../Pics/devs/dev1.jpeg" onclick="currentSlide(1)">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="../Pics/devs/dev2.png" onclick="currentSlide(2)">
+                            <img class="demo cursor" src="../Pics/devs/dev2.jpeg" onclick="currentSlide(2)">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="../Pics/devs/dev3.png" onclick="currentSlide(3)">
+                            <img class="demo cursor" src="../Pics/devs/dev3.jpeg" onclick="currentSlide(3)">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="../Pics/devs/dev4.png" onclick="currentSlide(4)">
+                            <img class="demo cursor" src="../Pics/devs/dev4.jpeg" onclick="currentSlide(4)">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="../Pics/devs/dev5.png" onclick="currentSlide(5)">
+                            <img class="demo cursor" src="../Pics/devs/dev5.jpeg" onclick="currentSlide(5)">
                         </div>
                     </div>
                 </div>
@@ -289,24 +296,30 @@
         </main>
         <footer id="Contacts">
             <div class="footer">
-                <div class="footer-container">
                     <div class="footer-row">
                         <div class="footer-column" style="display: inline-flex;">
                             <div class="address">
-                                <h2><a href="#Home" style="text-decoration: none; color: black; transition: .5s;" onmouseover="this.style.color='#5C8D89';" onmouseout="this.style.color='black';"> BOOM Qlinic</a><hr></h1>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <h2><a href="#Home" style="text-decoration: none; color: black; transition: .5s;" onmouseover="this.style.color='#5C8D89';" onmouseout="this.style.color='aliceblue';"> BOOM Qlinic</a><hr></h1>
+                                <p>At Biñan Clinic Management system, we are dedicated to providing comprehensive and compassionate healthcare services to our community. As a leading healthcare facility, we prioritize the well-being of our patients and strive to create a healing environment that fosters trust and comfort.</p>
                             </div>
                             <div class="address">
                                 <h2>Address<hr></h1>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="address-contents" style="display: inline-block;">
+                                    <p><img src="../Pics/icons/arrow.png"/> Our Address: BIñan City, Laguna</p>
+                                    <p><img src="../Pics/icons/arrow.png"/> Postal code: 4024 </p>
+                                    <p><img src="../Pics/icons/arrow.png"/> Region Name: REGION IV-A (CALABARZON)</p>
+                                </div>
                             </div>
                             <div class="address">
                                 <h2>Contacts<hr></h1>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="address-contents">
+                                    <p><img src="../Pics/icons/loc.png"/> Nicolas Building Mabini Street Poblacion Canlalay Biñan, Laguna, Philippines</p>
+                                    <p><img src="../Pics/icons/email.png"/> cho2binanlr4a@gmail.com</p>
+                                    <p><img src="../Pics/icons/call.png"/> +49 511 7918</p>    
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <div id="map" style="height: 200px;"></div>
             </div>
             <div class="copyright">
