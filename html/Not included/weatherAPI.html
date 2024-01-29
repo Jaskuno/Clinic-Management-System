@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Example</title>
+</head>
+<body>
+    <h1>Current Weather</h1>
+    <div id="weather-info"></div>
+
+    <script>
+        const city = 'Binan, Philippines'; // Specify Binan City, Philippines
+
+        const apiUrl = `https://wttr.in/${city}?format=%t`;
+
+        // Fetch data from wttr.in
+        fetch(apiUrl)
+            .then(response => response.text())
+            .then(weatherInfo => {
+                // Display the weather information
+                const weatherInfoElement = document.getElementById('weather-info');
+                weatherInfoElement.innerHTML = `<p>${city} Weather: ${weatherInfo}</p>`;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+            });
+    </script>
+</body>
+</html>
