@@ -11,7 +11,7 @@
             transition-duration: 1s; 
         }
         body {
-            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../../Pics/Clinic.jepg");
+            background-image: linear-gradient(rgba(172, 215, 255, 0.6), rgba(0, 0, 0, 0.60)), url("../../Pics/Clinic.jpeg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -24,25 +24,52 @@
         .header {
             background-image: linear-gradient(to right, rgba(0, 194, 253, 0.918), rgba(255, 255, 255, 0.788), rgb(255, 255, 255), rgba(255, 255, 255, 0.788), rgba(0, 194, 253, 0.918));
             text-align: center;
-            padding: 30px;
+            padding: 30px 30px 0 30px;
             overflow: hidden;
         }
-        .nav a {
-            color: black;
-            text-decoration: none;
-            padding: 10px;
-            margin: 0px 90px 0 90px;
+
+        /* Main */
+        /* .appointment-form {
+
+        } */
+        .appointment-form{
+            padding: 50px 100px;
         }
-        .nav a:hover, .main a:hover {
-            color: white;
-            background: #74B49B;
-            transition: .5s;
+        #appointment-form {
+            position: relative;
+            background-color: #A7D7C5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+            padding: 50px;
+            text-align: left;
+            justify-content: center;
         }
-        .active {
-            border-bottom: 5px solid #74B49B;
-            border-radius: 5px;;
-            padding-bottom: 5px;
+
+        .appointment-form label {
+            display: block;
+            height: auto;
+            font-size: 20px;
         }
+
+        .Column {
+            Padding: 20px 50px;
+        }
+        .Column-content {
+            width: 100%;
+            padding: 10px 0 0 5px;
+        }
+        .Column-content input, select{
+            text-align: left;
+            width: 100%;
+            
+        }
+
+        .Column-content select {
+            text-align: center;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -51,22 +78,74 @@
             <div class="logo">
                 <a href="../Home.html" style="font-size: 20px; text-decoration: none; color: black;"><img src="../../Pics/logo.png" width="65px" height="60px" style="vertical-align: middle; border-radius: 50%;"/>BOOM Qlinic </a>
             </div>
-            <div class="nav" style="display: inline-flex; width: auto;">
-                <a class="nav-link active" href="#Appointments" onclick="activateLink(this); return true;">Appointments</a>
-                <a class="nav-link" href="#" onclick="activateLink(this); return true;">About Us</a>
-                <a class="nav-link" href="#" onclick="activateLink(this); return true;">Contacts</a>
-            </div>
         </header>
+        <main>
+            <div class="appointment-form">
+                <h2 style="color: rgb(0, 0, 0); font-size: 40px; position: absolute; top: 16%; left: 22%; transform: translate(-50%, -50%); z-index: 1;">SCHEDULE APPOINTMENT</h2>
+                <form action="Appointments.php" method="post" id="appointment-form" onsubmit="addAppointment(); return false;">
+                    <div class="Column First-Column" id="First-Column">
+                        <div class="Column-content">
+                            <label for="patientName">
+                                <b>Patient Name: <input type="text" id="patientName" name="patientName" required=""></b>
+                            </label>
+                        </div>
+                        <div class="Column-content">
+                            <label for="age">
+                                <b>Age: <input type="number" id="age" name="age" required=""></b>
+                            </label>
+                        </div>
+                        <div class="Column-content">
+                            <label for="sex">
+                                <b>Sex: 
+                                <select id="sex" name="sex" required="">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                </b>
+                            </label>
+                        </div>
+                        <div class="Column-content">
+                            <label for="status"><b>Status: 
+                                <select id="status" name="status" required="">
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Widowed">Widowed</option>
+                                    <option value="Separated">Separated</option>
+                                </select></b>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="Column Second-Column" id="Second-Column">
+                        <div class="Column-content">
+                            <label for="appointmentDate">
+                                <b>Appointment Date: <input type="date" id="appointmentDate" name="appointmentDate" required=""></b>
+                            </label>
+                        </div>
+                        <div class="Column-content">
+                            <label for="emailAddress">
+                                <b>Email Address: <input type="email" id="emailAddress" name="emailAddress" required=""></b>
+                            </label>
+                        </div> 
+                        <div class="Column-content">
+                            <label for="contactNumber">
+                                <b>Contact Number: <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{11}" required=""></b>
+                            </label>
+                        </div>
+                        <div class="Column-content">
+                            <label for="concern">
+                                <b>Concern: <textarea id="concern" name="concern" rows="4" required=""></textarea></b>
+                            </label>
+                        </div> 
+                    </div>
+                    <br>
+                    <div class="Column bttn-container">
+                        <button type="submit">Schedule Appointment</button>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
-    <script>
-        function activateLink(link) {
-            var links = document.querySelectorAll('.nav-link');
-            links.forEach(function (item) {
-                item.classList.remove('active');
-            });
-            
-            link.classList.add('active');
-        }
-    </script>
 </body>
 </html>

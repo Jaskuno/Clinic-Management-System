@@ -46,32 +46,6 @@
             border-radius: 5px;;
             padding-bottom: 5px;
         }
-            /* For Dropdown */
-            
-            #dropdown {
-                margin: 8px 0 5px 0;
-            }
-            #dropdown-container a {
-                display: block;
-                padding: 5px 17.5px 5px 17.5px;
-                margin: 0;
-            }
-            
-            #dropdown a:hover ~ #dropdown-container, #dropdown-container:hover {
-                background-color: rgb(0, 153, 255);
-                position: absolute;
-                visibility: visible;
-                opacity: 1;
-            }
-            #dropdown-container {
-                visibility: hidden;
-                opacity: 0;
-                position: absolute;
-                right:19.2%;
-                top: 5.9%;
-                z-index: 1;
-                transition: opacity 2s, visibility 0s;
-            }
             
         /* MAIN */
         
@@ -100,14 +74,6 @@
         }
         #Appointments:hover {
             background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/9648347.jpg");
-            background-size: cover;
-        }
-        #records:hover {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/10862338.jpg");
-            background-size: cover;
-        }
-        #inventory:hover {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("https://wallpaperaccess.com/full/1503528.jpg");
             background-size: cover;
         }
         /* Main2 */
@@ -208,13 +174,7 @@
                 <a class="nav-link active" href="#Home" onclick="activateLink(this); return true;">Home</a>
                 <a class="nav-link" href="#AboutUs" onclick="activateLink(this); return true;">About Us</a>
                 <a class="nav-link" href="#Contacts" onclick="activateLink(this); return true;">Contacts</a>
-                <div id="dropdown">
-                    <a class="nav-link" href="#">Accounts</a>
-                    <div id="dropdown-container">
-                        <a class="dropdown-content" href="Login.html">Doctors</a>
-                        <a class="dropdown-content" href="#">Admin</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="Login.html">Accounts</a>
             </div>
         </header>
         <main>
@@ -222,8 +182,6 @@
                 <p>Clinic Management System</p>
                 <div class="link">
                     <a href="Services/Appointments.html" id="Appointments" style="background-color: #5C8D89;">Appointments</a>
-                    <a href="Records.html" id="records" style="background-color: #74B49B;">Records</a>
-                    <a href="#" id="inventory" style="background-color: #A7D7C5;">Inventory</a>
                 </div>
             </div>
             <div class="main2" id="AboutUs" style="background-image: linear-gradient(rgba(0, 0, 0, 0.575),rgba(0, 0, 0, 0.575)); position: relative; display: flex; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
@@ -329,22 +287,11 @@
             </div>
         </footer>
     </div>
-    <!-- For Map API -->
-    <script>
-        var mymap = L.map('map').setView([14.3359, 121.08850], 40);
-    </script>
-    <script>
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(mymap);
-    </script>
-    <script>
-        L.marker([14.3359, 121.08850]).addTo(mymap)
-          .bindPopup('San Antonio Health Center.');
-    </script>
 
     <!-- For WebPage Stylin -->
+    
     <script>
+    // navigation styling
         function activateLink(link) {
             var links = document.querySelectorAll('.nav-link');
             links.forEach(function (item) {
@@ -375,6 +322,22 @@
             slides[slideIndexs - 1].style.display = "block";
             dots[slideIndexs - 1].className += " active";
         }
+    </script>
+    <!-- For Map API -->
+    <script>
+    // Map POV
+        var mymap = L.map('map').setView([14.3359, 121.08850], 40);
+    </script>
+    <script>
+    //Copied API from openstreetmap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(mymap);
+    </script>
+    <script>
+    // Location Marks
+        L.marker([14.3359, 121.08850]).addTo(mymap)
+          .bindPopup('San Antonio Health Center.');
     </script>
 </body>
 </html>
