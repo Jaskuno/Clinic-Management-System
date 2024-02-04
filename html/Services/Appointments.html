@@ -82,7 +82,7 @@
         <main>
             <div class="appointment-form">
                 <h2 style="color: rgb(0, 0, 0); font-size: 40px; position: absolute; top: 16%; left: 22%; transform: translate(-50%, -50%); z-index: 1;">SCHEDULE APPOINTMENT</h2>
-                <form action="Appointments.php" method="post" id="appointment-form" onsubmit="addAppointment(); return false;">
+                <form action="http://localhost/Clinic-Management-System/html/Services/appointmentdb.py" method="post" id="appointment-form">
                     <div class="Column First-Column" id="First-Column">
                         <div class="Column-content">
                             <label for="patientName">
@@ -120,7 +120,7 @@
                     <div class="Column Second-Column" id="Second-Column">
                         <div class="Column-content">
                             <label for="appointmentDate">
-                                <b>Appointment Date: <input type="date" id="appointmentDate" name="appointmentDate" required=""></b>
+                                <b>Appointment Date: <input type="datetime-local" id="appointmentDate" name="appointmentDate" required=""></b>
                             </label>
                         </div>
                         <div class="Column-content">
