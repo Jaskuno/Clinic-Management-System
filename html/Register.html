@@ -99,22 +99,25 @@
     <div class="container">
         <div class="Login-container">
             <div class="Login">
-                <form>
+                <form action="http://localhost/Clinic-Management-System/html/doctordb.py" method="post">
                     <h1>Create an Account<hr></h1>
                     <div class="input-container">
-                        <input name="Email" type="email" placeholder="Email" required/>
+                        <input name="DOCTOR_Name" type="text" placeholder="Name" required/>
                     </div>
                     <div class="input-container">
-                        <input name="Username" type="text" placeholder="Username" required/>
+                        <input name="DOCTOR_Email" type="email" placeholder="Email" required/>
                     </div>
                     <div class="input-container">
-                        <input name="Address" type="text" placeholder="Address" required/>
+                        <input name="DOCTOR_Username" type="text" placeholder="Username" required/>
                     </div>
                     <div class="input-container">
-                        <input name="ContactNumber" type="tel" id="contactNumber" pattern="[0-9]{11}" placeholder="Contact no." required/>
+                        <input name="DOCTOR_Address" type="text" placeholder="Address" required/>
                     </div>
                     <div class="input-container">
-                        <input name="Password" type="password" placeholder="Password" required/>
+                        <input name="DOCTOR_ContactNumber" type="tel" id="contactNumber" pattern="[0-9]{11}" placeholder="Contact no." required/>
+                    </div>
+                    <div class="input-container">
+                        <input name="DOCTOR_Password" type="password" placeholder="Password" required/>
                     </div>
                     <div>
                         <button type="submit">Submit</button>
