@@ -35,7 +35,9 @@ def insert_data(patientName, age, sex, status, appointmentDate, emailAddress, co
         query = "INSERT INTO customerapnmt (patient_Name, patient_Age, patient_Sex, patient_Status, patient_ApmtDate, patient_Email, patient_Contact, patient_Concern) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         values = (patientName, age, sex, status, appointmentDate, emailAddress, contactNumber, concern)
 
-
+        query = "INSERT INTO patient_info (info_Name, info_Age, info_Sex, info_Status, info_Email, info_Contact) VALUES(%s, %s, %s, %s, %s, %s)"
+        values = (patientName, age, sex, status, emailAddress, contactNumber)
+        
         cursor.execute(query, values)
         connection.commit()
 

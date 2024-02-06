@@ -32,10 +32,10 @@
     	// Remove the appointment from the database
     	$query = "DELETE FROM customerapnmt WHERE patient_ID = '$patientID'";
     	$result = mysqli_query($conn, $query);
-		echo '<script>';
-    	if ($result) {echo 'alert("Appointment removed successfully!");';} 
-		else {echo 'alert("Error removing appointment. Please try again...");';}
-		echo '</script>';
+			echo '<script>';
+    			if ($result) {echo 'alert("Appointment removed successfully!");';} 
+				else {echo 'alert("Error removing appointment. Please try again...");';}
+			echo '</script>';
     	// Close the database connection
     	mysqli_close($conn);
 	}
@@ -229,16 +229,85 @@
 		color: black;
 		border:none;
 	}
-	/* End profile Style */
 
 	/* Appointment Style */
-		/* Wala akong ni design, puro naka inline css */
-	/* End Appointment Style */
+	
+	/* Patient Style */
+	.container {
+            width: 85%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #74B49B;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+		.container h1 {
+            text-align: center;
+            border-bottom: 2px solid #74B49B;
+            color: #333;
+        }
+        .patient-list li {
+			display: flex;
+			flex-wrap: wrap;
+			width: 87%;
+			height: 40px;
+			border-radius: 10px;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 50px;
+			border: 1px solid #ddd;
+			background-color: #f9f9f9;
+			cursor: pointer;
+			margin-bottom: 10px;
+		}
+        .patient-list li .list p {
+            display: inline;
+            margin-left: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
 
-	/* Patient style */
-		/* Dito mona lagay yung css ng patient */
-	/* PAtient style end */
+		/* For Popup */
+		.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    float: right;
+	background-color: wheat;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	padding: 2px 5px;
+	border-radius: 30%;
+	color: black;
+    cursor: pointer;
+	&:hover{
+		background-color: Red;
+		color:black;
+	}
+}
 </style>
+<script>
+        function showPatientInfo(patientId) {
+            window.location.href = 'http://localhost/Clinic-Management-System/html/patient_info.php?info_ID=' + patientId;
+        }
+    </script>
 </head>
 <body>
 	<!-- Header -->
@@ -343,26 +412,29 @@
         				$result = mysqli_query($conn, $query);
 
         				if (mysqli_num_rows($result) > 0) {
-            				echo "<table border='1' style='font-size: 20px;'>";
-            				echo "<tr><th>ID</th><th>Name</th><th>Age</th><th>Sex</th><th>Status</th><th>Appointment Date</th><th>Email</th><th>Contact</th><th>Concern</th><th>Action</th></tr>";
+            				echo "<div style=' width:100%;'>";
+    						echo "<div style='display: table; margin: auto;'>";
+    						echo "<table border='1' style='font-size: 20px;'>";
+    						echo "<tr><th>ID</th><th>Name</th><th>Age</th><th>Sex</th><th>Status</th><th>Appointment Date</th><th>Email</th><th>Contact</th><th>Concern</th><th>Action</th></tr>";
 
-            				while ($row = mysqli_fetch_assoc($result)) {
-                				echo
-                				"<tr id='appointment_row_{$row["patient_ID"]}'>
-                    				<td>{$row["patient_ID"]}</td>
-                    				<td>{$row["patient_Name"]}</td>
-                    				<td>{$row["patient_Age"]}</td>
-                    				<td>{$row["patient_Sex"]}</td>
-                    				<td>{$row["patient_Status"]}</td>
-                    				<td>{$row["patient_ApmtDate"]}</td>
-                    				<td>{$row["patient_Email"]}</td>
-                    				<td>{$row["patient_Contact"]}</td>
-                    				<td>{$row["patient_Concern"]}</td>
-                    				<td><form method='post'><input type='hidden' name='patientID' value='{$row["patient_ID"]}' /><input type='submit' name='removeAppointment' value='Remove' /></form></td>
-                				</tr>";
-            				}
+    						while ($row = mysqli_fetch_assoc($result)) {
+        						echo
+        						"<tr id='appointment_row_{$row["patient_ID"]}'>
+            						<td>{$row["patient_ID"]}</td>
+            						<td>{$row["patient_Name"]}</td>
+            						<td>{$row["patient_Age"]}</td>
+            						<td>{$row["patient_Sex"]}</td>
+            						<td>{$row["patient_Status"]}</td>
+            						<td>{$row["patient_ApmtDate"]}</td>
+            						<td>{$row["patient_Email"]}</td>
+            						<td>{$row["patient_Contact"]}</td>
+            						<td>{$row["patient_Concern"]}</td>
+            						<td><form method='post'><input type='hidden' name='patientID' value='{$row["patient_ID"]}' /><input type='submit' name='removeAppointment' value='Remove' /></form></td>
+        						</tr>";
+    						}
 
-            				echo "</table>";
+    						echo "</table>";
+    						echo "</div></div>";
         				} 
 						else {echo "No appointments found.";}
 					 	mysqli_close($conn);
@@ -376,39 +448,76 @@
 
 
 		<!-- Patient beginning -->
+		<?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "cms";
 
-						<!-- Dito kana mag simula mag code para di nakakalito -->
-						<!-- may layer din yung css kaya di kana malilito -->
-						<!-- Pakilagyan ng class yung mga halimbawa h1 or a, kasi pag nilagay mo sa CSS eh
-						a {
-							padding:20px;
-						}
-						lahat ng <a> mababago, kaya dapat ilagay mo kung anong class sya nang galing
-						e.g
-						<div class="eg">
-							<a href="#">test</a>
-						</div>
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-						dapat ang csss nya
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+    ?>
 
-						.eg a {
-							padding:10px;
-						}
+    <div class="container">
+        <h1>Patient List</h1>
+        <ul class="patient-list">
+    <?php
+    $patientListQuery = "SELECT * FROM patient_info";
+    $patientListResult = $conn->query($patientListQuery);
 
-						para di madamay lahat ng <a>
-					 -->
-						<!-- *****************  -->
-						<!-- sana basahin mo kase ito'y important -->
-						<!-- *****************  -->
+    if ($patientListResult->num_rows > 0) {
+        while ($patient = $patientListResult->fetch_assoc()) {
+            echo '<li>
+                    <div class="list">
+                        <p>' . $patient['info_Name'] . '</p>
+                        <button onclick="showPatientModal(' . $patient['info_ID'] . ')">View Details</button>
+                    </div>
+                </li>';
+        }
+    }
+    ?>
+</ul>
+    </div>
+
+    <?php $conn->close(); ?>
 		<!-- Patient End -->
-
-
 
 
     </main>
 	<!-- Remove an appointment -->
 	<script>
     	function removeAppointment(patientID) { alert("Remove appointment with ID: " + patientID); }
-	</script>	
+	</script>
+	<script>
+    function showPatientModal(patientID) {
+        var modal = document.getElementById('patientModal');
+        modal.style.display = 'flex';
+
+        // Fetch patient details using AJAX and update modal content
+        fetch('get_patient_details.php?patientID=' + patientID)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('modalContent').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching patient details:', error);
+            });
+    }
+
+    function closePatientModal() {
+        var modal = document.getElementById('patientModal');
+        modal.style.display = 'none';
+    }
+</script>
+<div id="patientModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closePatientModal()">X</span>
+        <div id="modalContent">
+        </div>
+    </div>
+</div>
 </body>
 </html>
