@@ -229,9 +229,15 @@
 		color: black;
 		border:none;
 	}
+	/* End profile Style */
 
 	/* Appointment Style */
+		/* Wala akong ni design, puro naka inline css */
+	/* End Appointment Style */
 
+	/* Patient style */
+		/* Dito mona lagay yung css ng patient */
+	/* PAtient style end */
 </style>
 </head>
 <body>
@@ -366,6 +372,39 @@
     		</div>
 		</div>
 		<!-- Appointment End -->
+
+
+
+		<!-- Patient beginning -->
+
+						<!-- Dito kana mag simula mag code para di nakakalito -->
+						<!-- may layer din yung css kaya di kana malilito -->
+						<!-- Pakilagyan ng class yung mga halimbawa h1 or a, kasi pag nilagay mo sa CSS eh
+						a {
+							padding:20px;
+						}
+						lahat ng <a> mababago, kaya dapat ilagay mo kung anong class sya nang galing
+						e.g
+						<div class="eg">
+							<a href="#">test</a>
+						</div>
+
+						dapat ang csss nya
+
+						.eg a {
+							padding:10px;
+						}
+
+						para di madamay lahat ng <a>
+					 -->
+						<!-- *****************  -->
+						<!-- sana basahin mo kase ito'y important -->
+						<!-- *****************  -->
+		<!-- Patient End -->
+
+
+
+
     </main>
 	<!-- Remove an appointment -->
 	<script>
