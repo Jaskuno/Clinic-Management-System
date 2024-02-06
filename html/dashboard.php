@@ -1,30 +1,44 @@
 <?php
-$doctor_ID = isset($_GET['doctor_ID']) ? $_GET['doctor_ID'] : '';
+	$doctor_ID = isset($_GET['doctor_ID']) ? $_GET['doctor_ID'] : '';
 
-session_start();
-$_SESSION['doctor_ID'] = $doctor_ID;
-function connect_to_mysql() {
-    return mysqli_connect("localhost", "root", "", "cms");
-}
-function fetch_user_info($doctor_ID) {
-    $connection = connect_to_mysql();
+	session_start();
+	$_SESSION['doctor_ID'] = $doctor_ID;
+		function connect_to_mysql() { return mysqli_connect("localhost", "root", "", "cms"); }
+		function fetch_user_info($doctor_ID) {
+    		$connection = connect_to_mysql();
 
-    $query = "SELECT doctor_Email, doctor_Address, doctor_Contact, doctor_Username, doctor_Password, doctor_Name FROM doctors WHERE doctor_ID = '$doctor_ID'";
-    $result = mysqli_query($connection, $query);
+    		$query = "SELECT doctor_Email, doctor_Address, doctor_Contact, doctor_Username, doctor_Password, doctor_Name FROM doctors WHERE doctor_ID = '$doctor_ID'";
+    		$result = mysqli_query($connection, $query);
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        $user_info = mysqli_fetch_assoc($result);
-    } else {
-        $user_info = null;
-    }
+    		if ($result && mysqli_num_rows($result) > 0) { $user_info = mysqli_fetch_assoc($result); } 
+			else {$user_info = null;}
 
-    mysqli_close($connection);
+    		mysqli_close($connection);
 
-    return $user_info;
-}
+    		return $user_info;
+		}
+	$user_info = fetch_user_info($doctor_ID);
+?>
 
-// Fetch user information
-$user_info = fetch_user_info($doctor_ID);
+<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["removeAppointment"])) {
+    	$patientID = isset($_POST["patientID"]) ? $_POST["patientID"] : '';
+
+    	// Connect to the database
+    	$conn = mysqli_connect("localhost", "root", "", "cms");
+
+    	if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+
+    	// Remove the appointment from the database
+    	$query = "DELETE FROM customerapnmt WHERE patient_ID = '$patientID'";
+    	$result = mysqli_query($conn, $query);
+		echo '<script>';
+    	if ($result) {echo 'alert("Appointment removed successfully!");';} 
+		else {echo 'alert("Error removing appointment. Please try again...");';}
+		echo '</script>';
+    	// Close the database connection
+    	mysqli_close($conn);
+	}
 ?>
 </body>
 </html>
@@ -309,17 +323,53 @@ $user_info = fetch_user_info($doctor_ID);
         </div>
 		<!-- Profile End -->
 		<!-- For Appointment -->
-		<div id="appointment" style="background-color:White; width: 100%; height:500px; text-align:center;">
-		<p style="background-color:aquamarine; width:100%;font-size:30px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold; letter-spacing:2px;">Appointments</p>
-			<div style="padding:20px;">
-				<div style="background-color:rgba(0, 0, 0, 0.712);">
-					<div>
-						
-					</div>
+		<div id="appointment" style="background-color:White; width: 100%; height:fit-content; text-align:center;">
+	    <p style="background-color:aquamarine; width:100%; font-size:30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold; letter-spacing:2px;">Appointments</p>
+    		<div style="padding:20px; display:flex;">
+				<div style="background-color: rgba(0, 0, 0, 0.712); height: fit-content; width: 100%; padding: 30px;">
+    				<div>
+        				<?php
+        				$conn = mysqli_connect("localhost", "root", "", "cms");
+
+        				if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+
+        				$query = "SELECT * FROM customerapnmt";
+        				$result = mysqli_query($conn, $query);
+
+        				if (mysqli_num_rows($result) > 0) {
+            				echo "<table border='1' style='font-size: 20px;'>";
+            				echo "<tr><th>ID</th><th>Name</th><th>Age</th><th>Sex</th><th>Status</th><th>Appointment Date</th><th>Email</th><th>Contact</th><th>Concern</th><th>Action</th></tr>";
+
+            				while ($row = mysqli_fetch_assoc($result)) {
+                				echo
+                				"<tr id='appointment_row_{$row["patient_ID"]}'>
+                    				<td>{$row["patient_ID"]}</td>
+                    				<td>{$row["patient_Name"]}</td>
+                    				<td>{$row["patient_Age"]}</td>
+                    				<td>{$row["patient_Sex"]}</td>
+                    				<td>{$row["patient_Status"]}</td>
+                    				<td>{$row["patient_ApmtDate"]}</td>
+                    				<td>{$row["patient_Email"]}</td>
+                    				<td>{$row["patient_Contact"]}</td>
+                    				<td>{$row["patient_Concern"]}</td>
+                    				<td><form method='post'><input type='hidden' name='patientID' value='{$row["patient_ID"]}' /><input type='submit' name='removeAppointment' value='Remove' /></form></td>
+                				</tr>";
+            				}
+
+            				echo "</table>";
+        				} 
+						else {echo "No appointments found.";}
+					 	mysqli_close($conn);
+        				?>
+    				</div>
 				</div>
-			</div>
-		</div>		
+    		</div>
+		</div>
 		<!-- Appointment End -->
     </main>
+	<!-- Remove an appointment -->
+	<script>
+    	function removeAppointment(patientID) { alert("Remove appointment with ID: " + patientID); }
+	</script>	
 </body>
 </html>
