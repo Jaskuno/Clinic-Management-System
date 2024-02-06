@@ -30,7 +30,7 @@ def insert_data(email, username, address, contact_number, password, name):
         connection = connect_to_mysql()
         cursor = connection.cursor()
 
-        query = "INSERT INTO doctors (doctor_Email, doctor_Address, doctor_Contact, doctor_Username, doctor_Password, doctor_Name) VALUES (%s, %s, %s, %s, %s)"
+        query = "INSERT INTO doctors (doctor_Email, doctor_Address, doctor_Contact, doctor_Username, doctor_Password, doctor_Name) VALUES (%s, %s, %s, %s, %s, %s)"
         values = (email, address, contact_number, username, password, name)
 
         cursor.execute(query, values)

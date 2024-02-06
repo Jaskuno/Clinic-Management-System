@@ -1,13 +1,11 @@
 <?php
-// Retrieve doctor_ID from the URL parameter
 $doctor_ID = isset($_GET['doctor_ID']) ? $_GET['doctor_ID'] : '';
 
-// Function to establish a connection to Xampp MySQL
+session_start();
+$_SESSION['doctor_ID'] = $doctor_ID;
 function connect_to_mysql() {
     return mysqli_connect("localhost", "root", "", "cms");
 }
-
-// Function to fetch specific user information based on doctor_ID
 function fetch_user_info($doctor_ID) {
     $connection = connect_to_mysql();
 
@@ -218,42 +216,8 @@ $user_info = fetch_user_info($doctor_ID);
 		border:none;
 	}
 
-	/* Patient Style */
-	.container {
-            width: 85%;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid #74B49B;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-		.container h1 {
-            text-align: center;
-            border-bottom: 2px solid #74B49B;
-            color: #333;
-        }
-        .patient-list li {
-			display: flex;
-			flex-wrap: wrap;
-			width: 87%;
-			height: 40px;
-			border-radius: 10px;
-			justify-content: space-between;
-			align-items: center;
-			padding: 0 50px;
-			border: 1px solid #ddd;
-			background-color: #f9f9f9;
-			cursor: pointer;
-			margin-bottom: 10px;
-		}
-        .patient-list li .list p {
-            display: inline;
-            margin-left: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
+	/* Appointment Style */
+
 </style>
 </head>
 <body>
@@ -292,48 +256,47 @@ $user_info = fetch_user_info($doctor_ID);
 		</nav>
 	</header>
     <main style="background: #2D4354;">
+	<!-- For Doctor Profile -->
         <div id="profile" style="background-color: rgba(11, 0, 73, 0.918); display:flex; padding: 130px 20px 50px 20px;">
 			<div>
-			<div class="profile_content">
-				<img src="../Pics/doctor1.jpeg" style="width:200px; border-radius:10%;"/>
-			</div>
-			<div class="profile_content" style="border-radius: 0%; padding: 10px; color:#ddd; text-align:center;">
-				<p>Dr. <?php echo $user_info['doctor_Name']; ?></p><br>
-				<p><?php echo $user_info['doctor_Email']; ?></p><br>
-				<p><?php echo $user_info['doctor_Address']; ?></p><br>
-				<p><?php echo $user_info['doctor_Contact']; ?></p>
-			</div>
+				<div class="profile_content">
+					<img src="../Pics/doctor1.jpeg" style="width:200px; border-radius:10%;"/>
+				</div>
+				<div class="profile_content" style="border-radius: 0%; padding: 10px; color:#ddd; text-align:center;">
+					<p>Dr. <?php echo $user_info['doctor_Name']; ?></p><br>
+					<p><?php echo $user_info['doctor_Email']; ?></p><br>
+					<p><?php echo $user_info['doctor_Address']; ?></p><br>
+					<p><?php echo $user_info['doctor_Contact']; ?></p>
+				</div>
 			</div>
 			<div class="profile_content" style="width: 100%; height:450px; background-color:rgba(9, 10, 49, 0.788); padding:20px; border-radius:5%;">
-				<form action="dashboard.php" method="post" style="display: flex;">
+				<form action="http://localhost/Clinic-Management-System/html/pf_Update.php" method="post" style="display: flex;">
                 <?php
                 if ($user_info) {
                     ?>
 					<div class="doctor_informations_container">
 						<div class="doctor_informations">
 							<label for="doctor_Email">Email: </label>
-							<input id="doctor_Email" placeholder="Email" type="email" value="<?php echo $user_info['doctor_Email']; ?>"/>
-							<button type="button">Change</button>
+							<input id="doctor_Email" name="doctor_Email" placeholder="Email" type="email" value="<?php echo $user_info['doctor_Email']; ?>"/>
 						</div>
                     	<div class="doctor_informations">
 							<label for="doctor_Username">Username: </label>
-							<input id="doctor_Username" placeholder="Username" type="text" value="<?php echo $user_info['doctor_Username']; ?> "/> 
-							<button type="button">Change</button>      		
+							<input id="doctor_Username" name="doctor_Username" placeholder="Username" type="text" value="<?php echo $user_info['doctor_Username']; ?> "/>      		
 						</div>
 						<div class="doctor_informations">
 							<label for="doctor_Address">Address: </label>                  		
-							<input id="doctor_Address" placeholder="Address" type="text" value="<?php echo $user_info['doctor_Address']; ?>"/>
-							<button type="button">Change</button>
+							<input id="doctor_Address" name="doctor_Address" placeholder="Address" type="text" value="<?php echo $user_info['doctor_Address']; ?>"/>
 						</div>
 						<div class="doctor_informations">
 							<label for="doctor_Contact">Contact: </label>
-							<input id="doctor_Contact" placeholder="Contact No." type="tel" pattern="[0-9]{11}" value="<?php echo $user_info['doctor_Contact']; ?>"/>
-							<button type="button">Change</button>
+							<input id="doctor_Contact" name="doctor_Contact" placeholder="Contact" type="tel" pattern="[0-9]{11}" value="<?php echo $user_info['doctor_Contact']; ?>"/>
 						</div>
 						<div class="doctor_informations">
 							<label for="doctor_Password">Password: </label>
-							<input id="doctor_Password" placeholder="Password" type="password" value="<?php echo $user_info['doctor_Password']; ?>"/>
-							<button type="button">Change</button>
+							<input id="doctor_Password" name="doctor_Password" placeholder="Password" type="password" value="<?php echo $user_info['doctor_Password']; ?>"/>
+						</div>
+						<div class="doctor_informations">
+							<button type="submit" style="margin: 0 100px;">Update</button>
 						</div>
 					</div>
                     <?php
@@ -344,43 +307,19 @@ $user_info = fetch_user_info($doctor_ID);
             </form>
 			</div>
         </div>
-        <div id="patient" style="height:100vh; padding-top: 70px;">
-            <div style="font-family: Century Gothic; background-color: #F5F5F5; padding:20px;">
-                <?php
-                 $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "patients";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                 die("Connection failed: " . $conn->connect_error);
-                }
-            ?>
-
-            <div class="container">
-                <h1>Patient List</h1>
-                <ul class="patient-list">
-                    <?php
-                        $patientListQuery = "SELECT * FROM patient_info";
-                        $patientListResult = $conn->query($patientListQuery);
-
-                        if ($patientListResult->num_rows > 0) {
-                            while ($patient = $patientListResult->fetch_assoc()) {
-                                echo '<li onclick="showPatientInfo(' . $patient['patient_id'] . ')">
-                                    <div class="list">
-                                        <p>' . $patient['name'] . '</p>
-                                    </div>
-                                </li>';
-                            }
-                        }
-                    ?>
-                </ul>
-            </div>
-            <?php $conn->close(); ?>
-            </div>
-        </div>
+		<!-- Profile End -->
+		<!-- For Appointment -->
+		<div id="appointment" style="background-color:White; width: 100%; height:500px; text-align:center;">
+		<p style="background-color:aquamarine; width:100%;font-size:30px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold; letter-spacing:2px;">Appointments</p>
+			<div style="padding:20px;">
+				<div style="background-color:rgba(0, 0, 0, 0.712);">
+					<div>
+						
+					</div>
+				</div>
+			</div>
+		</div>		
+		<!-- Appointment End -->
     </main>
 </body>
 </html>

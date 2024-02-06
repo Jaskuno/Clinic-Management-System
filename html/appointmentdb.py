@@ -42,7 +42,7 @@ def insert_data(patientName, age, sex, status, appointmentDate, emailAddress, co
         print("""
             <script>
                 alert('Successfully make an Appointment!');
-                window.location.href = '../Home.html';
+                window.location.href = 'Home.html';
             </script>
         """)
 
